@@ -1,0 +1,6 @@
+{
+  "name": "klar solution",
+  "description": "Premium landing page for klar solution - AI Automation with 70–90% less manual work. Human-in-the-loop, DSGVO-compliant Sales-leads, Finance-documents, and BI intelligence processes featuring multilingual support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

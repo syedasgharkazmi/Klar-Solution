@@ -175,7 +175,7 @@ export const translations: Record<string, LanguageContent> = {
       startNow: "Jetzt starten",
       bestOffer: "BESTES ANGEBOT",
       bundleSave: "✓ Sie sparen CHF 87 pro Monat",
-      insteadOf: "/ Monat statt CHF 577",
+      insteadOf: "/ Monat statt CHF 797",
       bundleRequest: "Bundle anfragen",
       serviceAccount: "Dedizierter Account Manager",
       uptime: "SLA & 99,9% Uptime",
@@ -337,7 +337,7 @@ export const translations: Record<string, LanguageContent> = {
       startNow: "Get started",
       bestOffer: "BEST DEAL",
       bundleSave: "✓ You save CHF 87 per month",
-      insteadOf: "/ month instead of CHF 577",
+      insteadOf: "/ month instead of CHF 797",
       bundleRequest: "Request Bundle",
       serviceAccount: "Dedicated Account Manager",
       uptime: "SLA & 99.9% Uptime",
@@ -499,7 +499,7 @@ export const translations: Record<string, LanguageContent> = {
       startNow: "立即开启",
       bestOffer: "最强推荐套件",
       bundleSave: "✓ 尊享高级优惠立减 CHF 87 / 月",
-      insteadOf: "/ 月 (原价 CHF 577)",
+      insteadOf: "/ 月 (原价 CHF 797)",
       bundleRequest: "咨询全能套件",
       serviceAccount: "尊享 VIP 客户成功经理",
       uptime: "卓越 SLA 与 99.9% 稳定在线",
@@ -661,7 +661,7 @@ export const translations: Record<string, LanguageContent> = {
       startNow: "Iniciar ahora",
       bestOffer: "MEJOR OFERTA",
       bundleSave: "✓ Ahorra CHF 87 al mes",
-      insteadOf: "/ mes en vez de CHF 577",
+      insteadOf: "/ mes en vez de CHF 797",
       bundleRequest: "Reservar Bundle",
       serviceAccount: "Gerente de cuentas dedicado",
       uptime: "SLA y disponibilidad del 99,9%",
@@ -823,7 +823,7 @@ export const translations: Record<string, LanguageContent> = {
       startNow: "Démarrer",
       bestOffer: "MEILLEURE OFFRE",
       bundleSave: "✓ Économisez CHF 87 par mois",
-      insteadOf: "/ mois au lieu de CHF 577",
+      insteadOf: "/ mois au lieu de CHF 797",
       bundleRequest: "Réserver le Bundle",
       serviceAccount: "Gestionnaire de compte attitré",
       uptime: "SLA et disponibilité de 99,9%",
@@ -935,3 +935,32 @@ export const translations: Record<string, LanguageContent> = {
     }
   }
 };
+
+export const seoTranslations = {
+  de: {
+    title: "klar solution | Premium AI-Automation & Prozessoptimierung",
+    description: "Sparen Sie bis zu 90% manuelle Arbeit mit DSGVO-konformer AI-Automation für B2B-Sales, Finanzen & Dokumenten-Verarbeitung sowie BI-Intelligence in der Schweiz.",
+    keywords: "AI Automation, DSGVO, B2B Lead Generierung, Finanz Automation, Belege auslesen, Business Intelligence Schweiz, Human-in-the-Loop, Prozessoptimierung"
+  },
+  en: {
+    title: "klar solution | Premium AI Automation & Process Optimization",
+    description: "Save up to 90% manual work with DSGVO/GDPR-compliant AI Automation for B2B Sales, Finance Document processing, and Business Intelligence.",
+    keywords: "AI Automation, GDPR, B2B lead generation, finance automation, invoice scanning, BI, business intelligence, Swiss AI, human-in-the-loop, process optimization"
+  },
+  zh: {
+    title: "klar solution | 高级AI自动化和业务流程优化专家",
+    description: "通过符合 DSGVO/GDPR 的 AI 自动化技术在 B2B 销售、财务文件处理和商业智能上节省高达 90% 的人工工作量 (Human-in-the-Loop)。",
+    keywords: "AI自动化, 德语区DSGVO, B2B线索生成, 财务自动化, 发票识别, 商业智能BI, 瑞士人工智能, 人机协同, 流程优化"
+  },
+  es: {
+    title: "klar solution | Automatización Premium con IA y Optimización de Procesos",
+    description: "Ahorre hasta un 90% de trabajo manual con automatización de IA que cumple con DSGVO/GDPR para ventas B2B, procesamiento de documentos financieros e inteligencia empresarial.",
+    keywords: "automatización de IA, DSGVO, generación de leads B2B, automatización financiera, escaneo de facturas, inteligencia empresarial, IA suiza, flujo humano, optimización de procesos"
+  },
+  fr: {
+    title: "klar solution | Automatisation IA Premium et Optimisation des Processus",
+    description: "Économisez jusqu'à 90% de travail manuel grâce à l'automatisation de l'IA conforme au RGPD/DSGVO pour les ventes B2B, le traitement des documents financiers et la Business Intelligence.",
+    keywords: "automatisation IA, RGPD, génération de leads B2B, automatisation financière, facturation IA, business intelligence, IA Suisse, validation humaine, optimisation des processus"
+  }
+};
+

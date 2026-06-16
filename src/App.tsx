@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './components/Logo';
-import { translations } from './translations';
+import { translations, seoTranslations } from './translations';
 
 export default function App() {
   const [lang, setLang] = useState<'de' | 'en' | 'zh' | 'es' | 'fr'>('de');
@@ -36,6 +36,48 @@ export default function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'demo' | 'question'>('demo');
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Dynamic SEO meta-update when language changes
+  useEffect(() => {
+    const seo = seoTranslations[lang] || seoTranslations.de;
+    
+    // Update tab title
+    document.title = seo.title;
+    
+    // Update standard meta tags
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) {
+      descMeta.setAttribute('content', seo.description);
+    }
+    
+    const keywordsMeta = document.getElementById('seo-keywords');
+    if (keywordsMeta) {
+      keywordsMeta.setAttribute('content', seo.keywords);
+    }
+    
+    // Update Open Graph tags
+    const ogTitle = document.getElementById('og-title');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', seo.title);
+    }
+    const ogDesc = document.getElementById('og-description');
+    if (ogDesc) {
+      ogDesc.setAttribute('content', seo.description);
+    }
+    
+    // Update Twitter Card tags
+    const twTitle = document.getElementById('twitter-title');
+    if (twTitle) {
+      twTitle.setAttribute('content', seo.title);
+    }
+    const twDesc = document.getElementById('twitter-description');
+    if (twDesc) {
+      twDesc.setAttribute('content', seo.description);
+    }
+    
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+  }, [lang]);
   
   // Track scroll position to update the progress bar at the top of the navbar
   useEffect(() => {
@@ -133,7 +175,7 @@ export default function App() {
         </a>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-[28px] list-none" id="nav-desktop-links">
+        <ul className="hidden lg:flex items-center gap-[28px] list-none" id="nav-desktop-links">
           <li>
             <a href="#how" className="text-[13px] text-brand-muted hover:text-brand-black font-medium transition-colors font-sans" id="nav-link-how">
               {t.nav.howItWorks}
@@ -367,13 +409,13 @@ export default function App() {
         </div>
 
         {/* HERO VISUAL - DIGITAL CONTROL PANEL */}
-        <div className="lg:col-span-5 bg-brand-card border border-brand-black/8 rounded-2xl p-6.5 shadow-xl shadow-brand-black/5 relative group transition-all" id="hero-visual-card">
+        <div className="lg:col-span-5 bg-brand-card border border-brand-black/8 rounded-2xl p-6 sm:p-8 shadow-xl shadow-brand-black/5 relative group transition-all" id="hero-visual-card">
           <div className="absolute top-4 right-4 flex gap-1.5" id="visual-dots">
             <span className="w-2 h-2 rounded-full bg-red-400" />
             <span className="w-2 h-2 rounded-full bg-yellow-400" />
             <span className="w-2 h-2 rounded-full bg-green-400" />
           </div>
-          <div className="text-[11.5px] font-bold tracking-widest text-brand-muted uppercase mb-4.5 font-sans" id="visual-label">
+          <div className="text-[11.5px] font-bold tracking-widest text-brand-muted uppercase mb-4 font-sans" id="visual-label">
             {t.hero.visualTitle}
           </div>
 
@@ -409,51 +451,51 @@ export default function App() {
               <div className="font-display text-[13.5px] font-bold text-white mb-0.5">{t.hero.all4Packages}</div>
               <div className="text-[10.5px] text-accent font-semibold">{t.hero.youSave}</div>
             </div>
-            <div className="font-display text-[18px] font-extrabold text-accent">CHF 490</div>
+            <div className="font-display text-[18px] font-extrabold text-accent">CHF 710</div>
           </div>
         </div>
       </section>
 
       {/* STATS STRIP */}
-      <section className="bg-brand-black text-brand-white py-10 px-[5%]" id="stats">
-        <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/10" id="stats-grid">
-          <div className="text-center pt-6 md:pt-0" id="stat-1">
-            <div className="font-display text-[38px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.lessWork}</div>
-            <div className="text-[13px] text-white/50 font-sans font-light tracking-wide">{t.stats.lessWorkLabel}</div>
+      <section className="bg-brand-black text-brand-white py-12 px-[5%]" id="stats">
+        <div className="max-w-[1240px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6" id="stats-grid">
+          <div className="text-center" id="stat-1">
+            <div className="font-display text-[36px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.lessWork}</div>
+            <div className="text-[12px] sm:text-[13px] text-white/50 font-sans font-light tracking-wide max-w-[180px] mx-auto">{t.stats.lessWorkLabel}</div>
           </div>
-          <div className="text-center pt-6 md:pt-0" id="stat-2">
-            <div className="font-display text-[38px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.packagesCount}</div>
-            <div className="text-[13px] text-white/50 font-sans font-light tracking-wide">{t.stats.packagesCountLabel}</div>
+          <div className="text-center" id="stat-2">
+            <div className="font-display text-[36px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.packagesCount}</div>
+            <div className="text-[12px] sm:text-[13px] text-white/50 font-sans font-light tracking-wide max-w-[180px] mx-auto">{t.stats.packagesCountLabel}</div>
           </div>
-          <div className="text-center pt-6 md:pt-0" id="stat-3">
-            <div className="font-display text-[38px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.compliant}</div>
-            <div className="text-[13px] text-white/50 font-sans font-light tracking-wide">{t.stats.compliantLabel}</div>
+          <div className="text-center" id="stat-3">
+            <div className="font-display text-[36px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.compliant}</div>
+            <div className="text-[12px] sm:text-[13px] text-white/50 font-sans font-light tracking-wide max-w-[180px] mx-auto">{t.stats.compliantLabel}</div>
           </div>
-          <div className="text-center pt-6 md:pt-0" id="stat-4">
-            <div className="font-display text-[38px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.uptime}</div>
-            <div className="text-[13px] text-white/50 font-sans font-light tracking-wide">{t.stats.uptimeLabel}</div>
+          <div className="text-center" id="stat-4">
+            <div className="font-display text-[36px] sm:text-[44px] font-extrabold text-accent leading-none mb-2">{t.stats.uptime}</div>
+            <div className="text-[12px] sm:text-[13px] text-white/50 font-sans font-light tracking-wide max-w-[180px] mx-auto">{t.stats.uptimeLabel}</div>
           </div>
         </div>
       </section>
 
       {/* METHOD SECTION (HOW IT WORKS) */}
       <section className="px-[5%] py-24 max-w-[1200px] mx-auto scroll-mt-20" id="how">
-        <div className="text-accent text-[11px] font-bold tracking-[2px] uppercase mb-4 font-sans" id="how-tag">
+        <div className="text-accent text-[11px] font-bold tracking-[2px] uppercase mb-4 font-sans text-center lg:text-left" id="how-tag">
           {t.method.tag}
         </div>
-        <h2 className="font-display text-[32px] md:text-[42px] font-extrabold tracking-tight leading-[1.15] mb-4" id="how-heading">
+        <h2 className="font-display text-[32px] md:text-[42px] font-extrabold tracking-tight leading-[1.15] mb-4 text-center lg:text-left max-w-[700px] mx-auto lg:mx-0" id="how-heading">
           {t.method.title}
         </h2>
-        <p className="text-[17px] text-brand-muted font-light max-w-[580px] mb-16 font-sans" id="how-lead">
+        <p className="text-[17px] text-brand-muted font-light max-w-[580px] mb-16 font-sans text-center lg:text-left mx-auto lg:mx-0" id="how-lead">
           {t.method.lead}
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20" id="how-grid">
           {/* Left Flow Column */}
-          <div className="lg:col-span-7 flex flex-col divide-y divide-brand-black/8" id="how-flow-steps">
+          <div className="lg:col-span-7 flex flex-col divide-y divide-brand-black/8 lg:self-start" id="how-flow-steps">
             
             {/* Step 1 */}
-            <div className="flex gap-5 py-6 first:pt-0 last:pb-0" id="flow-step-1">
+            <div className="flex items-start text-left gap-4 sm:gap-5 py-6 first:pt-0 last:pb-0" id="flow-step-1">
               <div className="w-11 h-11 rounded-xl bg-accent-light shrink-0 flex items-center justify-center text-accent">
                 <Target size={20} />
               </div>
@@ -470,7 +512,7 @@ export default function App() {
             </div>
 
             {/* Step 2 */}
-            <div className="flex gap-5 py-6 last:pb-0" id="flow-step-2">
+            <div className="flex items-start text-left gap-4 sm:gap-5 py-6 last:pb-0" id="flow-step-2">
               <div className="w-11 h-11 rounded-xl bg-accent-light shrink-0 flex items-center justify-center text-accent">
                 <Receipt size={20} />
               </div>
@@ -485,8 +527,9 @@ export default function App() {
                 </p>
               </div>
             </div>
-                   {/* Step 3 */}
-            <div className="flex gap-5 py-6 last:pb-0" id="flow-step-3">
+
+            {/* Step 3 */}
+            <div className="flex items-start text-left gap-4 sm:gap-5 py-6 last:pb-0" id="flow-step-3">
               <div className="w-11 h-11 rounded-xl bg-accent-light shrink-0 flex items-center justify-center text-accent">
                 <BarChart3 size={20} />
               </div>
@@ -559,13 +602,13 @@ export default function App() {
 
           {/* Pricing Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" id="packages-grid">
-            {pkgs.map((pkg) => {
+            {pkgs.map((pkg, index) => {
               const IconComp = pkg.icon;
               const isHighlighted = highlightedCardId === pkg.id;
               return (
                 <div 
                   key={pkg.id}
-                  className={`bg-brand-card border rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 relative hover:shadow-xl hover:-translate-y-1 ${isHighlighted ? 'ring-4 ring-accent shadow-2xl border-accent scale-[1.02]' : 'border-brand-black/8'}`}
+                  className={`bg-brand-card border rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 relative hover:shadow-xl hover:-translate-y-1 ${isHighlighted ? 'ring-4 ring-accent shadow-2xl border-accent scale-[1.02]' : 'border-brand-black/8'} ${index === 2 ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none w-full' : ''}`}
                   id={pkg.id}
                 >
                   <div>
@@ -629,7 +672,7 @@ export default function App() {
               
               <div className="flex items-baseline gap-1.5 mb-1" id="bundle-price-row">
                 <span className="text-[18px] text-white/50">CHF</span>
-                <span className="font-display text-[48px] sm:text-[56px] font-extrabold text-accent leading-none">490</span>
+                <span className="font-display text-[48px] sm:text-[56px] font-extrabold text-accent leading-none">710</span>
               </div>
               <div className="text-[13px] text-white/40 mb-8 font-sans">
                 {t.packs.insteadOf}
@@ -970,7 +1013,7 @@ export default function App() {
                           <option value={t.p1.name}>{t.p1.name} (CHF {t.p1.price}/mo)</option>
                           <option value={t.p2.name}>{t.p2.name} (CHF {t.p2.price}/mo)</option>
                           <option value={t.p3.name}>{t.p3.name} (CHF {t.p3.price}/mo)</option>
-                          <option value="Bundle - All 3 AI packages">All 3 Packages Bundle (CHF 490/mo)</option>
+                          <option value="Bundle - All 3 AI packages">All 3 Packages Bundle (CHF 710/mo)</option>
                         </select>
                         <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-muted pointer-events-none" size={16} />
                       </div>

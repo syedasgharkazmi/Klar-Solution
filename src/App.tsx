@@ -23,19 +23,39 @@ import {
   ChevronDown,
   BarChart3,
   MessageSquare,
-  Target
+  Target,
+  User
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './components/Logo';
 import { translations, seoTranslations } from './translations';
+import AuthPage from './components/AuthPage';
+import UserDashboard from './components/UserDashboard';
 
 export default function App() {
   const [lang, setLang] = useState<'de' | 'en' | 'zh' | 'es' | 'fr'>('de');
+  const [authenticatedUser, setAuthenticatedUser] = useState<{ name: string; email: string; company?: string; method: string } | null>(() => {
+    const stored = localStorage.getItem('klar_active_user');
+    return stored ? JSON.parse(stored) : null;
+  });
+  const [authPageOpen, setAuthPageOpen] = useState(false);
+  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedPkg, setSelectedPkg] = useState<string | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'demo' | 'question'>('demo');
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('klar_active_user');
+    setAuthenticatedUser(null);
+  };
+
+  const handleAuthSuccess = (user: { name: string; email: string; company?: string; method: string }) => {
+    localStorage.setItem('klar_active_user', JSON.stringify(user));
+    setAuthenticatedUser(user);
+    setAuthPageOpen(false);
+  };
 
   // Dynamic SEO meta-update when language changes
   useEffect(() => {
@@ -156,6 +176,34 @@ export default function App() {
     }, 4000);
   };
 
+  const navLoginLabels = {
+    de: "Anmelden",
+    en: "Sign In",
+    zh: "登录",
+    es: "Iniciar Sesión",
+    fr: "Connexion"
+  };
+
+  if (authenticatedUser) {
+    return (
+      <UserDashboard 
+        user={authenticatedUser} 
+        currentLang={lang} 
+        onSignOut={handleSignOut} 
+      />
+    );
+  }
+
+  if (authPageOpen) {
+    return (
+      <AuthPage 
+        currentLang={lang} 
+        onClose={() => setAuthPageOpen(false)} 
+        onAuthSuccess={handleAuthSuccess} 
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-brand-white text-brand-black selection:bg-accent/30 flex flex-col pt-[68px]">
       
@@ -171,7 +219,7 @@ export default function App() {
         </div>
 
         <a href="#" className="flex items-center" id="logo-nav-link">
-          <Logo className="h-[44px] w-auto object-contain" />
+          <Logo />
         </a>
 
         {/* Desktop Links */}
@@ -239,6 +287,14 @@ export default function App() {
               <span>🇫🇷</span> <span className="text-[11px] font-semibold">FR</span>
             </button>
           </div>
+
+          <button 
+            onClick={() => setAuthPageOpen(true)} 
+            className="text-[13.5px] text-brand-muted hover:text-brand-black px-3.5 py-2 rounded-lg font-semibold cursor-pointer transition-colors font-sans"
+            id="nav-signin-btn"
+          >
+            {navLoginLabels[lang]}
+          </button>
 
           <button 
             onClick={() => handleOpenModal('demo')} 
@@ -321,6 +377,16 @@ export default function App() {
                 >
                   {t.nav.contact}
                 </a>
+              </li>
+              <li className="pt-2">
+                <button 
+                  onClick={() => { setMobileMenuOpen(false); setAuthPageOpen(true); }}
+                  className="w-full text-center bg-accent-light text-accent-dim hover:bg-accent hover:text-white px-4 py-2.5 rounded-xl text-[14px] font-bold font-sans flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  id="mobile-link-signin"
+                >
+                  <User size={15} />
+                  <span>{navLoginLabels[lang]}</span>
+                </button>
               </li>
             </ul>
 
@@ -826,7 +892,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="px-[5%] py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 max-w-[1200px] mx-auto border-t border-brand-black/8 mt-auto" id="footer">
         <div className="lg:col-span-5 flex flex-col items-start" id="footer-logo-brand">
-          <Logo className="h-[46px] w-auto object-contain mb-4" />
+          <Logo className="mb-4" />
           <p className="text-[14px] text-brand-muted leading-[1.7] max-w-[280px] font-sans" id="footer-brand-text">
             {t.footer.brandText}
           </p>

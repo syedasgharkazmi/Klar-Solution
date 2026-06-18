@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Fix compatibility issues with window.fetch setters in sandboxed frames -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return originalFetch;
+            },
+            set: function(value) {
+              originalFetch = value;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          console.warn('[fetch-safeguard] Unable to customize fetch setter:', e);
+        }
+      })();
+    </script>
+    
     <!-- Primary SEO Meta Tags -->
     <title>klar solution | Premium AI-Automation & Prozessoptimierung</title>
     <meta name="description" content="Sparen Sie bis zu 90% manuelle Arbeit mit DSGVO-konformer AI-Automation für B2B-Sales, Finanzen &amp; Dokumenten-Verarbeitung sowie BI-Intelligence in der Schweiz." />

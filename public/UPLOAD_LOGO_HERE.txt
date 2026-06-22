@@ -1,0 +1,6 @@
+# Upload logo.png Here
+
+To use your exact logo image file on your website:
+1. Save your logo image as `logo.png` (with an eye-safe or transparent background).
+2. Drag and drop or upload your `logo.png` file directly into this `/public/` folder.
+3. The website is pre-configured to look inside `/public/logo.png` first and will display your file exactly as it is without any changes or modifications!

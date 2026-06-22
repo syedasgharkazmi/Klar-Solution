@@ -208,9 +208,9 @@ export default function App() {
     <div className="min-h-screen bg-brand-white text-brand-black selection:bg-accent/30 flex flex-col pt-[68px]">
       
       {/* NAVIGATION BAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-brand-white/92 backdrop-blur-md border-b border-brand-black/8 px-[5%] flex items-center justify-between h-[68px]" id="navbar">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#070808]/95 backdrop-blur-md border-b border-white/10 px-[5%] flex items-center justify-between h-[68px]" id="navbar">
         {/* Scroll Progress Bar at the very top */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-brand-black/5" id="scroll-progress-bg">
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-white/5" id="scroll-progress-bg">
           <div 
             className="h-full bg-accent transition-all duration-75 ease-out" 
             style={{ width: `${scrollProgress}%` }}
@@ -219,28 +219,28 @@ export default function App() {
         </div>
 
         <a href="#" className="flex items-center" id="logo-nav-link">
-          <Logo />
+          <Logo lightText />
         </a>
 
         {/* Desktop Links */}
         <ul className="hidden lg:flex items-center gap-[28px] list-none" id="nav-desktop-links">
           <li>
-            <a href="#how" className="text-[13px] text-brand-muted hover:text-brand-black font-medium transition-colors font-sans" id="nav-link-how">
+            <a href="#how" className="text-[13px] text-white/70 hover:text-white font-medium transition-colors font-sans" id="nav-link-how">
               {t.nav.howItWorks}
             </a>
           </li>
           <li>
-            <a href="#packages" className="text-[13px] text-brand-muted hover:text-brand-black font-medium transition-colors font-sans" id="nav-link-packages">
+            <a href="#packages" className="text-[13px] text-white/70 hover:text-white font-medium transition-colors font-sans" id="nav-link-packages">
               {t.nav.packages}
             </a>
           </li>
           <li>
-            <a href="#use" className="text-[13px] text-brand-muted hover:text-brand-black font-medium transition-colors font-sans" id="nav-link-usecases">
+            <a href="#use" className="text-[13px] text-white/70 hover:text-white font-medium transition-colors font-sans" id="nav-link-usecases">
               {t.nav.useCases}
             </a>
           </li>
           <li>
-            <a href="#contact" className="text-[13px] text-brand-muted hover:text-brand-black font-medium transition-colors font-sans" id="nav-link-contact">
+            <a href="#contact" className="text-[13px] text-white/70 hover:text-white font-medium transition-colors font-sans" id="nav-link-contact">
               {t.nav.contact}
             </a>
           </li>
@@ -250,38 +250,38 @@ export default function App() {
         <div className="hidden lg:flex items-center gap-[16px]" id="nav-right-options">
           
           {/* Custom Elegant Lang Switcher */}
-          <div className="flex gap-1 bg-brand-black/5 p-1 rounded-lg" id="desktop-lang-switcher">
+          <div className="flex gap-1 bg-white/5 p-1 rounded-lg border border-white/5" id="desktop-lang-switcher">
             <button 
               onClick={(e) => handleLangChange('de', e)} 
-              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'de' ? 'bg-accent text-white shadow-sm' : 'text-brand-muted hover:text-brand-black'}`}
+              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'de' ? 'bg-accent text-white shadow-sm' : 'text-white/60 hover:text-white'}`}
               id="lang-de-btn"
             >
               <span>🇩🇪</span> <span className="text-[11px] font-semibold">DE</span>
             </button>
             <button 
               onClick={(e) => handleLangChange('en', e)} 
-              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'en' ? 'bg-accent text-white shadow-sm' : 'text-brand-muted hover:text-brand-black'}`}
+              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'en' ? 'bg-accent text-white shadow-sm' : 'text-white/60 hover:text-white'}`}
               id="lang-en-btn"
             >
               <span>🇬🇧</span> <span className="text-[11px] font-semibold">EN</span>
             </button>
             <button 
               onClick={(e) => handleLangChange('zh', e)} 
-              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'zh' ? 'bg-accent text-white shadow-sm' : 'text-brand-muted hover:text-brand-black'}`}
+              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'zh' ? 'bg-accent text-white shadow-sm' : 'text-white/60 hover:text-white'}`}
               id="lang-zh-btn"
             >
               <span>🇨🇳</span> <span className="text-[11px] font-semibold">ZH</span>
             </button>
             <button 
               onClick={(e) => handleLangChange('es', e)} 
-              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'es' ? 'bg-accent text-white shadow-sm' : 'text-brand-muted hover:text-brand-black'}`}
+              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'es' ? 'bg-accent text-white shadow-sm' : 'text-white/60 hover:text-white'}`}
               id="lang-es-btn"
             >
               <span>🇪🇸</span> <span className="text-[11px] font-semibold">ES</span>
             </button>
             <button 
               onClick={(e) => handleLangChange('fr', e)} 
-              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'fr' ? 'bg-accent text-white shadow-sm' : 'text-brand-muted hover:text-brand-black'}`}
+              className={`text-[12px] px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer flex items-center gap-1 ${lang === 'fr' ? 'bg-accent text-white shadow-sm' : 'text-white/60 hover:text-white'}`}
               id="lang-fr-btn"
             >
               <span>🇫🇷</span> <span className="text-[11px] font-semibold">FR</span>
@@ -290,7 +290,7 @@ export default function App() {
 
           <button 
             onClick={() => setAuthPageOpen(true)} 
-            className="text-[13.5px] text-brand-muted hover:text-brand-black px-3.5 py-2 rounded-lg font-semibold cursor-pointer transition-colors font-sans"
+            className="text-[13.5px] text-white/70 hover:text-white px-3.5 py-2 rounded-lg font-semibold cursor-pointer transition-colors font-sans"
             id="nav-signin-btn"
           >
             {navLoginLabels[lang]}
@@ -298,7 +298,7 @@ export default function App() {
 
           <button 
             onClick={() => handleOpenModal('demo')} 
-            className="bg-brand-black text-brand-white hover:bg-accent border-none px-5 py-2.5 rounded-lg text-[13px] font-semibold cursor-pointer transition-colors font-sans shadow-md shadow-brand-black/5"
+            className="bg-accent text-white hover:bg-accent/90 border-none px-5 py-2.5 rounded-lg text-[13px] font-semibold cursor-pointer transition-colors font-sans shadow-md"
             id="nav-cta-btn"
           >
             {t.nav.cta}
@@ -309,7 +309,7 @@ export default function App() {
         <div className="flex lg:hidden items-center gap-3" id="nav-mobile-toggle-wrapper">
           <button 
             onClick={() => handleOpenModal('demo')} 
-            className="md:inline-block bg-brand-black text-brand-white px-3.5 py-2 rounded-lg text-[12px] font-semibold cursor-pointer transition-colors font-sans"
+            className="md:inline-block bg-accent text-white px-3.5 py-2 rounded-lg text-[12px] font-semibold cursor-pointer transition-colors font-sans"
             id="mobile-nav-cta-btn"
           >
             {t.nav.cta}
@@ -317,7 +317,7 @@ export default function App() {
           
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="p-1 text-brand-black hover:text-accent cursor-pointer"
+            className="p-1 text-white/80 hover:text-white cursor-pointer"
             id="mobile-menu-toggle"
             aria-label="Toggle menu"
           >
@@ -334,15 +334,15 @@ export default function App() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[68px] left-0 w-full bg-brand-white border-b border-brand-black/8 z-40 lg:hidden px-[5%] py-6 flex flex-col gap-6 shadow-xl"
+            className="fixed top-[68px] left-0 w-full bg-[#070808] border-b border-white/10 z-40 lg:hidden px-[5%] py-6 flex flex-col gap-6 shadow-xl"
             id="mobile-links-container"
           >
-            <ul className="flex flex-col gap-4 list-none" id="mobile-links-list">
+            <ul className="flex flex-col gap-3 list-none" id="mobile-links-list">
               <li>
                 <a 
                   href="#how" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-[15px] text-brand-muted hover:text-brand-black font-semibold transition-colors font-sans"
+                  className="block text-[15px] text-white/80 hover:text-white font-semibold transition-colors font-sans"
                   id="mobile-link-how"
                 >
                   {t.nav.howItWorks}
@@ -352,7 +352,7 @@ export default function App() {
                 <a 
                   href="#packages" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-[15px] text-brand-muted hover:text-brand-black font-semibold transition-colors font-sans"
+                  className="block text-[15px] text-white/80 hover:text-white font-semibold transition-colors font-sans"
                   id="mobile-link-packages"
                 >
                   {t.nav.packages}
@@ -362,7 +362,7 @@ export default function App() {
                 <a 
                   href="#use" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-[15px] text-brand-muted hover:text-brand-black font-semibold transition-colors font-sans"
+                  className="block text-[15px] text-white/80 hover:text-white font-semibold transition-colors font-sans"
                   id="mobile-link-usecases"
                 >
                   {t.nav.useCases}
@@ -372,7 +372,7 @@ export default function App() {
                 <a 
                   href="#contact" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-[15px] text-brand-muted hover:text-brand-black font-semibold transition-colors font-sans"
+                  className="block text-[15px] text-white/80 hover:text-white font-semibold transition-colors font-sans"
                   id="mobile-link-contact"
                 >
                   {t.nav.contact}
@@ -381,7 +381,7 @@ export default function App() {
               <li className="pt-2">
                 <button 
                   onClick={() => { setMobileMenuOpen(false); setAuthPageOpen(true); }}
-                  className="w-full text-center bg-accent-light text-accent-dim hover:bg-accent hover:text-white px-4 py-2.5 rounded-xl text-[14px] font-bold font-sans flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="w-full text-center bg-white/10 text-white hover:bg-accent px-4 py-2.5 rounded-xl text-[14px] font-bold font-sans flex items-center justify-center gap-2 cursor-pointer transition-all"
                   id="mobile-link-signin"
                 >
                   <User size={15} />
@@ -390,44 +390,44 @@ export default function App() {
               </li>
             </ul>
 
-            <div className="h-[0.5px] bg-brand-black/8 my-1" id="mobile-menu-divider" />
+            <div className="h-[0.5px] bg-white/10 my-1" id="mobile-menu-divider" />
 
             {/* Language switches in mobile */}
             <div className="flex flex-wrap gap-2.5 items-center" id="mobile-languages-switcher">
-              <span className="text-[12px] text-brand-muted font-medium font-sans flex items-center gap-1">
+              <span className="text-[12px] text-white/65 font-medium font-sans flex items-center gap-1">
                 <Globe size={14} className="text-accent" /> Language:
               </span>
               <button 
                 onClick={(e) => { handleLangChange('de', e); setMobileMenuOpen(false); }}
-                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'de' ? 'bg-accent-light text-accent-dim' : 'bg-brand-black/5 text-brand-muted'}`}
+                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'de' ? 'bg-accent text-white' : 'bg-white/5 text-white/60'}`}
                 id="mob-lang-de"
               >
                 🇩🇪 DE
               </button>
               <button 
                 onClick={(e) => { handleLangChange('en', e); setMobileMenuOpen(false); }}
-                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'en' ? 'bg-accent-light text-accent-dim' : 'bg-brand-black/5 text-brand-muted'}`}
+                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'en' ? 'bg-accent text-white' : 'bg-white/5 text-white/60'}`}
                 id="mob-lang-en"
               >
                 🇬🇧 EN
               </button>
               <button 
                 onClick={(e) => { handleLangChange('zh', e); setMobileMenuOpen(false); }}
-                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'zh' ? 'bg-accent-light text-accent-dim' : 'bg-brand-black/5 text-brand-muted'}`}
+                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'zh' ? 'bg-accent text-white' : 'bg-white/5 text-white/60'}`}
                 id="mob-lang-zh"
               >
                 🇨🇳 中文
               </button>
               <button 
                 onClick={(e) => { handleLangChange('es', e); setMobileMenuOpen(false); }}
-                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'es' ? 'bg-accent-light text-accent-dim' : 'bg-brand-black/5 text-brand-muted'}`}
+                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'es' ? 'bg-accent text-white' : 'bg-white/5 text-white/60'}`}
                 id="mob-lang-es"
               >
                 🇪🇸 ES
               </button>
               <button 
                 onClick={(e) => { handleLangChange('fr', e); setMobileMenuOpen(false); }}
-                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'fr' ? 'bg-accent-light text-accent-dim' : 'bg-brand-black/5 text-brand-muted'}`}
+                className={`text-[12px] px-2.5 py-1.5 rounded-md font-semibold ${lang === 'fr' ? 'bg-accent text-white' : 'bg-white/5 text-white/60'}`}
                 id="mob-lang-fr"
               >
                 🇫🇷 FR
@@ -890,97 +890,99 @@ export default function App() {
       </div>
 
       {/* FOOTER */}
-      <footer className="px-[5%] py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 max-w-[1200px] mx-auto border-t border-brand-black/8 mt-auto" id="footer">
-        <div className="lg:col-span-5 flex flex-col items-start" id="footer-logo-brand">
-          <Logo className="mb-4" />
-          <p className="text-[14px] text-brand-muted leading-[1.7] max-w-[280px] font-sans" id="footer-brand-text">
-            {t.footer.brandText}
-          </p>
-          
-          <div className="inline-flex items-center gap-1.5 bg-accent-light text-accent-dim text-[12px] font-semibold px-3.5 py-1.5 rounded-full mt-6" id="footer-compliant-badge">
-            <ShieldCheck size={14} className="text-accent" />
-            {t.footer.compliantBadge}
+      <footer className="w-full bg-[#070808] text-white border-t border-white/10 mt-auto py-16" id="footer">
+        <div className="px-[5%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 max-w-[1200px] mx-auto">
+          <div className="lg:col-span-5 flex flex-col items-start" id="footer-logo-brand">
+            <Logo className="mb-4" lightText />
+            <p className="text-[14px] text-white/55 leading-[1.7] max-w-[280px] font-sans" id="footer-brand-text">
+              {t.footer.brandText}
+            </p>
+            
+            <div className="inline-flex items-center gap-1.5 bg-white/5 text-white/80 text-[12px] font-semibold px-3.5 py-1.5 rounded-full mt-6 border border-white/5" id="footer-compliant-badge">
+              <ShieldCheck size={14} className="text-accent" />
+              {t.footer.compliantBadge}
+            </div>
           </div>
-        </div>
 
-        {/* Product links col */}
-        <div className="lg:col-span-2 flex flex-col font-sans" id="footer-col-1">
-          <h4 className="font-display text-[14px] font-extrabold text-brand-black mb-5 tracking-wide">
-            {t.footer.product}
-          </h4>
-          <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-1">
-            <li>
-              <a href="#how" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.nav.howItWorks}
-              </a>
-            </li>
-            <li>
-              <a href="#packages" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.nav.packages}
-              </a>
-            </li>
-            <li>
-              <a href="#use" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.nav.useCases}
-              </a>
-            </li>
-          </ul>
-        </div>
+          {/* Product links col */}
+          <div className="lg:col-span-2 flex flex-col font-sans" id="footer-col-1">
+            <h4 className="font-display text-[14px] font-extrabold text-white mb-5 tracking-wide">
+              {t.footer.product}
+            </h4>
+            <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-1">
+              <li>
+                <a href="#how" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.nav.howItWorks}
+                </a>
+              </li>
+              <li>
+                <a href="#packages" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.nav.packages}
+                </a>
+              </li>
+              <li>
+                <a href="#use" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.nav.useCases}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Company links col */}
-        <div className="lg:col-span-2 flex flex-col font-sans" id="footer-col-2">
-          <h4 className="font-display text-[14px] font-extrabold text-brand-black mb-5 tracking-wide">
-            {t.footer.company}
-          </h4>
-          <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-2">
-            <li>
-              <a href="#contact" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.nav.contact}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.footer.aboutUs}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.footer.blog}
-              </a>
-            </li>
-          </ul>
-        </div>
+          {/* Company links col */}
+          <div className="lg:col-span-2 flex flex-col font-sans" id="footer-col-2">
+            <h4 className="font-display text-[14px] font-extrabold text-white mb-5 tracking-wide">
+              {t.footer.company}
+            </h4>
+            <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-2">
+              <li>
+                <a href="#contact" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.nav.contact}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.footer.aboutUs}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.footer.blog}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Legal links col */}
-        <div className="lg:col-span-3 flex flex-col font-sans" id="footer-col-3">
-          <h4 className="font-display text-[14px] font-extrabold text-brand-black mb-5 tracking-wide">
-            {t.footer.legal}
-          </h4>
-          <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-3">
-            <li>
-              <a href="#" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.footer.privacy}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.footer.imprint}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-[13.5px] text-brand-muted hover:text-brand-black transition-colors">
-                {t.footer.terms}
-              </a>
-            </li>
-          </ul>
+          {/* Legal links col */}
+          <div className="lg:col-span-3 flex flex-col font-sans" id="footer-col-3">
+            <h4 className="font-display text-[14px] font-extrabold text-white mb-5 tracking-wide">
+              {t.footer.legal}
+            </h4>
+            <ul className="flex flex-col gap-3 list-none p-0 m-0" id="footer-links-3">
+              <li>
+                <a href="#" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.footer.privacy}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.footer.imprint}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[13.5px] text-white/60 hover:text-white transition-colors">
+                  {t.footer.terms}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </footer>
 
       {/* FOOTER BOTTOM BAR */}
-      <div className="border-t border-brand-black/8 py-6 px-[5%]" id="footer-bottom-bar">
-        <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[13px] text-brand-muted font-sans" id="footer-bottom-flex">
+      <div className="bg-[#030404] py-6 px-[5%] border-t border-white/5" id="footer-bottom-bar">
+        <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[13px] text-white/50 font-sans" id="footer-bottom-flex">
           <span>{t.footer.rights}</span>
-          <span className="font-semibold">{t.footer.madeIn}</span>
+          <span className="font-semibold text-white/60">{t.footer.madeIn}</span>
         </div>
       </div>
 

@@ -1,0 +1,22 @@
+# Netlify Configuration File
+# This file tells Netlify how to build and deploy your React + Vite application.
+
+[build]
+  # The command to compile your TypeScript and Vite app
+  command = "npm run build"
+  
+  # The directory that Netlify will serve to visitors (Vite's build output folder)
+  publish = "dist"
+
+# Single Page Application (SPA) routing rules.
+# This prevents 404 errors when pages or routes are loaded or refreshed.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Optimal Cache-Control headers for Vite's hashed assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

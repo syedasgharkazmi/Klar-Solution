@@ -15,15 +15,15 @@ export default function Logo({ className = "", iconOnly = false, lightText = fal
         <img
           src="/logo.png"
           alt="klarsolution.com Logo"
-          className="h-[36px] w-auto max-w-[210px] object-contain object-left block"
+          className="h-[46px] md:h-[54px] w-auto max-w-[320px] object-contain object-left block"
           referrerPolicy="no-referrer"
           id="klar-logo-image"
           onError={() => setHasError(true)}
         />
       ) : (
-        /* Original vector styling fallback if logo.png is not found or has not been uploaded to the workspace yet */
-        <div className="flex items-center gap-2.5 transition-opacity duration-300">
-          <svg viewBox="0 0 100 100" className="w-[36px] h-[36px] shrink-0" id="klar-logo-vector">
+        /* Original vector styling fallback if logo.png is not found yet */
+        <div className="flex items-center gap-3 transition-opacity duration-300">
+          <svg viewBox="0 0 100 100" className="w-[44px] h-[44px] md:w-[50px] md:h-[50px] shrink-0" id="klar-logo-vector">
             <defs>
               <radialGradient id="sphereShine" cx="30%" cy="30%" r="70%">
                 <stop offset="0%" stopColor="#555d59" />
@@ -67,7 +67,7 @@ export default function Logo({ className = "", iconOnly = false, lightText = fal
 
           {/* Brand Name Text matching user's image: klarsolution.com in lowercase */}
           {!iconOnly && (
-            <span className={`font-sans text-[20px] font-medium tracking-tight transition-colors ${lightText ? 'text-[#e5e7eb]' : 'text-[#1c1d1a]'}`}>
+            <span className={`font-sans text-[22px] md:text-[26px] font-semibold tracking-tight transition-colors ${lightText ? 'text-[#e5e7eb]' : 'text-[#1c1d1a]'}`}>
               klarsolution<span className="text-[#1D9E75]">.com</span>
             </span>
           )}

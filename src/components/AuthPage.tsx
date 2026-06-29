@@ -313,6 +313,22 @@ export default function AuthPage({ currentLang, onClose, onAuthSuccess }: AuthPa
   const handleAutoFillDemo = () => {
     setEmailInput('admin@klar-solution.com');
     setPasswordInput('admin123');
+    setLoading(true);
+    setErrorMsg('');
+    
+    // Simulate instant secure authentication with a beautiful transition
+    setTimeout(() => {
+      setLoading(false);
+      setAuthSuccess(true);
+      setTimeout(() => {
+        onAuthSuccess({
+          name: "Klaus Rüegg",
+          email: "admin@klar-solution.com",
+          company: "Rüegg & Partner AG",
+          method: 'Demo Auto-Login'
+        });
+      }, 800);
+    }, 1000);
   };
 
   return (
@@ -343,8 +359,12 @@ export default function AuthPage({ currentLang, onClose, onAuthSuccess }: AuthPa
         {/* Content with no scroll */}
         <div className="p-5 flex-1 flex flex-col justify-between" id="auth-card-body">
           <div>
-            {/* Centered Small Logo Icon */}
-            <Logo className="justify-center mb-4 text-brand-black" />
+            {/* Centered Small Logo Icon wrapped in a dark themed card to beautifully frame the black-background brand logo */}
+            <div className="flex justify-center mb-4">
+              <div className="bg-[#070808] px-4 py-2 rounded-xl border border-white/10 inline-block shadow-md" id="auth-logo-badge">
+                <Logo />
+              </div>
+            </div>
 
             {/* Title & Subtitle */}
             <div className="text-center mb-4">
